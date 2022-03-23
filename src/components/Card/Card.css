@@ -1,0 +1,24 @@
+.card {
+    min-height: 25rem;
+    width: 100%;
+    position: relative;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.card__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2rem;
+}
+
+.card__title {
+    position: absolute;
+    color: #fff;
+    bottom: 10%;
+    left: 0.5rem;
+    z-index: 1;
+    text-align: center;
+}
