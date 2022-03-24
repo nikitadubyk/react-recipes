@@ -8,3 +8,17 @@ export interface IRecipes {
 export interface IResponse {
     responce: IRecipes[]
 }
+
+export interface IIngredients {
+    id: number
+    original: string
+}
+
+export interface IDetailRecipe {
+    id: number
+    title: string
+    image: string
+    summary: string
+    instructions: string
+    extendedIngredients: IIngredients[]
+}

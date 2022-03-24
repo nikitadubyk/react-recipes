@@ -1,0 +1,16 @@
+.cuisine {
+    display: grid;
+    padding: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-gap: 5rem;
+}
+
+.cuisine__wrapper {
+    width: 20rem;
+}
+
+.cuisine__title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}

@@ -1,0 +1,26 @@
+.category__wrapper {
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+}
+
+.category__title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.category__item {
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+    transition: all 0.5s;
+}
+
+.category__item:hover {
+    transform: translateY(-5px);
+}

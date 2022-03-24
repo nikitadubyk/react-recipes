@@ -1,0 +1,41 @@
+.recipe {
+    padding: 2rem;
+    display: flex;
+    margin-top: 2rem;
+}
+
+.recipe__wrapper {
+    margin-right: 5rem;
+}
+
+.recipe__title {
+    margin-bottom: 2rem;
+}
+
+.recipe__descr {
+    width: 50rem;
+}
+
+.recipe__descr a {
+    text-decoration: none;
+    color: #000;
+}
+
+.recipe__descr a:hover {
+    text-decoration: underline;
+}
+
+.recipe__button {
+    margin: 0 1rem 2rem;
+    border: 1px solid #000;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: 0.5s all;
+}
+
+.recipe__button:hover {
+    border: none;
+    background-color: #000;
+    color: #fff;
+}
