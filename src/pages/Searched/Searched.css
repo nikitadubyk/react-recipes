@@ -1,17 +1,15 @@
-.cuisine {
+.searched {
     display: grid;
-    justify-content: center;
+    padding: 50px;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     grid-gap: 5rem;
-    padding: 0 15rem;
 }
 
-.cuisine__wrapper {
+.searched__wrapper {
     width: 20rem;
-    margin: 0 auto;
 }
 
-.cuisine__title {
+.searched__title {
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
