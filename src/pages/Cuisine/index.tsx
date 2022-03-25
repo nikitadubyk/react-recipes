@@ -3,25 +3,17 @@ import { useParams } from 'react-router-dom'
 import { IRecipes } from '../../type'
 import Card from '../../components/Card'
 import Loader from '../../components/Loader'
-import { useHttp } from '../../hook/http.hook'
+import { useRecipesService } from '../../services/RecipesService'
 import './Cuisine.css'
 
 const Cuisine: React.FC = () => {
     const [cuisine, setCuisine] = useState<IRecipes[]>([])
-    const { isLoading, request } = useHttp()
+    const { isLoading, getCuisine } = useRecipesService()
 
     const { type } = useParams()
 
-    const getCuisine = async () => {
-        request(
-            `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=12&cuisine=${type}}`
-        ).then(res => {
-            setCuisine(res.results)
-        })
-    }
-
     useEffect(() => {
-        getCuisine()
+        getCuisine(type).then(res => setCuisine(res.results))
     }, [type])
 
     return (

@@ -1,25 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { IDetailRecipe, IIngredients } from '../../type'
-import { useHttp } from '../../hook/http.hook'
+import { useRecipesService } from '../../services/RecipesService'
 import Loader from '../../components/Loader'
 import './Recipe.css'
 
 const Recipe: React.FC = () => {
     const [detail, setDetail] = useState<IDetailRecipe>()
     const [buttonToggle, setButtonToggle] = useState<string>('instructions')
-    const { isLoading, request } = useHttp()
+    const { isLoading, getDetailRecipe } = useRecipesService()
     const { id } = useParams()
 
     useEffect(() => {
-        getDetail()
+        getDetailRecipe(id).then(res => setDetail(res))
     }, [id])
-
-    const getDetail = async () => {
-        request(
-            `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
-        ).then(res => setDetail(res))
-    }
 
     const toggleTagButton = (tag: string) => setButtonToggle(tag)
 

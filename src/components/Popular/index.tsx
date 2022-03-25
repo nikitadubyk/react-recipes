@@ -4,26 +4,24 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
 import Card from '../Card'
 import Loader from '../Loader'
-import { useHttp } from '../../hook/http.hook'
+import { useRecipesService } from '../../services/RecipesService'
 import './Popular.css'
 
 const Popular: React.FC = () => {
     const [populars, setPopulars] = useState<IRecipes[]>([])
-    const { isLoading, request } = useHttp()
+    const { isLoading, getPopularRecipes } = useRecipesService()
 
     useEffect(() => {
-        getPopularRecipes()
+        checkPopularRecipes()
     }, [])
 
-    async function getPopularRecipes() {
+    async function checkPopularRecipes() {
         const checkRecipes = localStorage.getItem('popular')
 
         if (checkRecipes) {
             setPopulars(JSON.parse(checkRecipes))
         } else {
-            request(
-                `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10`
-            ).then(res => {
+            getPopularRecipes().then(res => {
                 localStorage.setItem('popular', JSON.stringify(res.recipes))
                 setPopulars(res.recipes)
             })

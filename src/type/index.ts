@@ -22,3 +22,5 @@ export interface IDetailRecipe {
     instructions: string
     extendedIngredients: IIngredients[]
 }
+
+export type IParam = string | undefined

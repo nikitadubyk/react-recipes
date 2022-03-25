@@ -8,7 +8,6 @@ const Search: React.FC = () => {
 
     const submitForm = (e: React.SyntheticEvent) => {
         e.preventDefault()
-        console.log(inputValue)
         navigate('/searched/' + inputValue.toLowerCase())
     }
 
