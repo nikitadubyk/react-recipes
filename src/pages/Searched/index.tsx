@@ -3,8 +3,10 @@ import { useParams } from 'react-router-dom'
 import { IRecipes } from '../../type'
 import { useRecipesService } from '../../services/RecipesService'
 import Loader from '../../components/Loader'
-import './Searched.css'
 import Card from '../../components/Card'
+import Search from '../../components/Search'
+import Category from '../../components/Category'
+import './Searched.css'
 
 const Searched: React.FC = () => {
     const [recipes, setRecipes] = useState<IRecipes[]>([])
@@ -17,6 +19,8 @@ const Searched: React.FC = () => {
 
     return (
         <>
+            <Search />
+            <Category />
             <h3 className='searched__title'>Searched {name}</h3>
             {isLoading ? (
                 <Loader />

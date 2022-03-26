@@ -1,8 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Category from './components/Category'
 import Header from './components/Header'
-import Search from './components/Search'
 import Cuisine from './pages/Cuisine'
 import Home from './pages/Home'
 import Recipe from './pages/Recipe'
@@ -14,8 +12,6 @@ const App: React.FC = () => {
     return (
         <>
             <Header />
-            <Search />
-            <Category />
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/recipe/:id' element={<Recipe />} />

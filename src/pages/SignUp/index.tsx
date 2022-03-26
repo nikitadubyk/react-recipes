@@ -1,19 +1,17 @@
 import React, { useState } from 'react'
+import { createUser } from '../../utils/auth'
 import { useNavigate } from 'react-router-dom'
-import { createUser } from '../../components/Auth/firebase'
 import './SignUp.css'
 
-const Signup = () => {
-    const [emailValue, setEmailValue] = useState<string>('')
-    const [passwordValue, setPasswordValue] = useState<string>('')
+const Signup: React.FC = () => {
+    const [emailValue, setEmailValue] = useState('')
+    const [passwordValue, setPasswordValue] = useState('')
     const navigate = useNavigate()
 
     const handleSignUp = (e: React.SyntheticEvent) => {
         e.preventDefault()
         try {
-            createUser(emailValue, passwordValue).then(user =>
-                console.log(user)
-            )
+            createUser(emailValue, passwordValue)
             navigate('/')
         } catch (error) {
             alert(error)
@@ -21,28 +19,31 @@ const Signup = () => {
     }
 
     return (
-        <div>
+        <div className='signup'>
             <h2>Sign up</h2>
-            <form onSubmit={handleSignUp}>
-                <label>
-                    Email
-                    <input
-                        name='email'
-                        type='email'
-                        placeholder='Email'
-                        onChange={e => setEmailValue(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Password
-                    <input
-                        name='password'
-                        type='password'
-                        placeholder='Password'
-                        onChange={e => setPasswordValue(e.target.value)}
-                    />
-                </label>
-                <button type='submit'>Sign Up</button>
+            <form onSubmit={handleSignUp} className='signup__form'>
+                <h4>Email</h4>
+                <input
+                    name='email'
+                    type='email'
+                    placeholder='Email'
+                    onChange={e => setEmailValue(e.target.value)}
+                    className='signup__input'
+                    required
+                />
+                <h4>Password</h4>
+                <input
+                    name='password'
+                    type='password'
+                    placeholder='Password'
+                    onChange={e => setPasswordValue(e.target.value)}
+                    className='signup__input'
+                    required
+                    minLength={6}
+                />
+                <button className='signup__button' type='submit'>
+                    Sign Up
+                </button>
             </form>
         </div>
     )

@@ -1,8 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth, logOut } from '../../utils/auth'
+import { useNavigate } from 'react-router-dom'
 import './Header.css'
 
 const Header: React.FC = () => {
+    const currentUser = useAuth()
+    const navigate = useNavigate()
+
+    console.log('LOGOUT', currentUser)
+
+    const logOutHandler = () => {
+        logOut()
+        navigate('/')
+    }
+
     return (
         <header className='header'>
             <Link to='/' className='header__img'>
@@ -19,10 +31,17 @@ const Header: React.FC = () => {
                     </g>
                 </svg>
             </Link>
-            <div className='header__link'>
-                <Link to='/signup'>Sign Up</Link>
-                <Link to='/login'>Log In</Link>
-            </div>
+            {currentUser ? (
+                <div className='header__link'>
+                    <Link to='/favorite'>Favorite</Link>
+                    <button onClick={logOutHandler}>LogOut</button>
+                </div>
+            ) : (
+                <div className='header__link'>
+                    <Link to='/signup'>Sign Up</Link>
+                    <Link to='/login'>Log In</Link>
+                </div>
+            )}
         </header>
     )
 }

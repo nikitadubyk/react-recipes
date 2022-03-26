@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { useRecipesService } from '../../services/RecipesService'
 import { IRecipes } from '../../type'
+import Category from '../../components/Category'
+import Search from '../../components/Search'
 import Card from '../../components/Card'
 import Loader from '../../components/Loader'
-import { useRecipesService } from '../../services/RecipesService'
 import './Cuisine.css'
 
 const Cuisine: React.FC = () => {
@@ -18,6 +20,8 @@ const Cuisine: React.FC = () => {
 
     return (
         <>
+            <Search />
+            <Category />
             <h3 className='cuisine__title'>Cuisine {type}</h3>
             {isLoading ? (
                 <Loader />
