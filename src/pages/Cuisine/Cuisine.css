@@ -16,3 +16,22 @@
     font-size: 2rem;
     font-weight: bold;
 }
+
+@media (max-width: 1600px) {
+    .cuisine {
+        padding: 0 5rem;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    }
+}
+
+@media (max-width: 1280px) {
+    .cuisine {
+        padding: 0 5rem;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        gap: 3rem;
+    }
+
+    .cuisine__wrapper {
+        width: 15rem;
+    }
+}

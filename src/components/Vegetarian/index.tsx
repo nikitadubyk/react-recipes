@@ -40,7 +40,15 @@ const Vegetarian: React.FC = () => {
                         arrows: false,
                         pagination: false,
                         drag: 'free',
-                        gap: '5rem',
+                        gap: '3rem',
+                        breakpoints: {
+                            900: {
+                                perPage: 2,
+                            },
+                            500: {
+                                perPage: 1,
+                            },
+                        },
                     }}
                 >
                     {vegetarians &&

@@ -49,11 +49,15 @@
     color: #fff;
 }
 
-.error {
-    text-align: center;
-    padding: 2rem;
-    font-size: 1.2rem;
-    background-color: rgb(253, 104, 104);
-    width: 20rem;
-    margin: 2rem auto;
+@media (max-width: 900px) {
+    .login {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .login__form {
+        width: 100%;
+        padding: 1.5rem;
+    }
 }

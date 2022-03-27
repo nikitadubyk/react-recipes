@@ -24,3 +24,9 @@
 .category__item:hover {
     transform: translateY(-5px);
 }
+
+@media (max-width: 640px) {
+    .category__wrapper {
+        width: 18rem;
+    }
+}

@@ -33,18 +33,24 @@ const Recipe: React.FC = () => {
                             />
                         </div>
                         <div className='recipe__descr'>
-                            <button
-                                onClick={() => toggleTagButton('instructions')}
-                                className='recipe__button'
-                            >
-                                Instructions
-                            </button>
-                            <button
-                                onClick={() => toggleTagButton('ingridient')}
-                                className='recipe__button'
-                            >
-                                Ingridient
-                            </button>
+                            <div className='recipe__wrapper__button'>
+                                <button
+                                    onClick={() =>
+                                        toggleTagButton('instructions')
+                                    }
+                                    className='recipe__button'
+                                >
+                                    Instructions
+                                </button>
+                                <button
+                                    onClick={() =>
+                                        toggleTagButton('ingridient')
+                                    }
+                                    className='recipe__button'
+                                >
+                                    Ingridient
+                                </button>
+                            </div>
                             {buttonToggle === 'instructions' && (
                                 <>
                                     <p

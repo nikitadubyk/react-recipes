@@ -28,3 +28,14 @@
 .search input::placeholder {
     color: #fff;
 }
+
+@media (max-width: 400px) {
+    .search {
+        width: 15rem;
+        margin: 1.3rem auto;
+    }
+
+    .search input {
+        width: 100%;
+    }
+}

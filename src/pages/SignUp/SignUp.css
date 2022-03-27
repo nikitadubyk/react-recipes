@@ -57,3 +57,19 @@
     width: 20rem;
     margin: 2rem auto;
 }
+
+@media (max-width: 900px) {
+    .signup {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .signup__form {
+        width: 100%;
+        padding: 1.5rem;
+    }
+    .error {
+        width: 100%;
+    }
+}

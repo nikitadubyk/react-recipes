@@ -41,7 +41,18 @@ const Popular: React.FC = () => {
                             arrows: false,
                             pagination: false,
                             drag: 'free',
-                            gap: '5rem',
+                            gap: '2rem',
+                            breakpoints: {
+                                1200: {
+                                    perPage: 3,
+                                },
+                                640: {
+                                    perPage: 2,
+                                },
+                                560: {
+                                    perPage: 1,
+                                },
+                            },
                         }}
                     >
                         {populars &&
