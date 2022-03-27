@@ -48,3 +48,12 @@
     background-color: #000;
     color: #fff;
 }
+
+.error {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    background-color: rgb(253, 104, 104);
+    width: 20rem;
+    margin: 2rem auto;
+}

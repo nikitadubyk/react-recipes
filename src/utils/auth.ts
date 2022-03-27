@@ -14,6 +14,7 @@ export const createUser = async (email: string, password: string) => {
 
 export const useAuth = () => {
     const [currentUser, setCurrentUser] = useState<User | null>(null)
+    const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
     useEffect(() => {
         const unsub = onAuthStateChanged(auth, user => {
@@ -22,11 +23,12 @@ export const useAuth = () => {
             } else {
                 setCurrentUser(null)
             }
+            setIsLoaded(true)
         })
-        return unsub
+        return () => unsub()
     }, [currentUser])
 
-    return currentUser
+    return { currentUser, isLoaded }
 }
 
 export const logIn = async (email: string, password: string) => {

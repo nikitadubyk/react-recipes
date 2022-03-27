@@ -1,19 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth, logOut } from '../../utils/auth'
-import { useNavigate } from 'react-router-dom'
 import './Header.css'
 
 const Header: React.FC = () => {
-    const currentUser = useAuth()
-    const navigate = useNavigate()
-
-    console.log('LOGOUT', currentUser)
-
-    const logOutHandler = () => {
-        logOut()
-        navigate('/')
-    }
+    const { currentUser } = useAuth()
 
     return (
         <header className='header'>
@@ -34,7 +25,7 @@ const Header: React.FC = () => {
             {currentUser ? (
                 <div className='header__link'>
                     <Link to='/favorite'>Favorite</Link>
-                    <button onClick={logOutHandler}>LogOut</button>
+                    <button onClick={logOut}>LogOut</button>
                 </div>
             ) : (
                 <div className='header__link'>
