@@ -21,10 +21,7 @@ const Vegetarian: React.FC = () => {
             setVegetarians(JSON.parse(checkVegetarians))
         } else {
             getVegetarianRecipes().then(res => {
-                localStorage.setItem(
-                    'vegetarians',
-                    JSON.stringify(res.data.recipes)
-                )
+                localStorage.setItem('vegetarians', JSON.stringify(res.recipes))
                 setVegetarians(res.recipes)
             })
         }

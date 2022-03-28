@@ -1,0 +1,23 @@
+.favorite {
+    padding: 2rem 15rem;
+}
+.favorite__title {
+    font-size: 2rem;
+}
+
+.favorite__wrapper {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 5rem;
+}
+
+.favorite__item {
+    width: 15rem;
+    margin: 0 auto;
+}
+
+.favorite__error {
+    margin: 1rem auto;
+    text-align: center;
+}
