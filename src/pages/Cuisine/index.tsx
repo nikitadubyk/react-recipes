@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useRecipesService } from '../../services/RecipesService'
 import { IRecipes } from '../../type'
+import Layout from '../../components/Layout'
 import Category from '../../components/Category'
 import Search from '../../components/Search'
 import Card from '../../components/Card'
@@ -16,10 +17,10 @@ const Cuisine: React.FC = () => {
 
     useEffect(() => {
         getCuisine(type).then(res => setCuisine(res.results))
-    }, [type])
+    }, [type, getCuisine])
 
     return (
-        <>
+        <Layout title={`Cuisine ${type}`}>
             <Search />
             <Category />
             <h3 className='cuisine__title'>Cuisine {type}</h3>
@@ -37,7 +38,7 @@ const Cuisine: React.FC = () => {
                         })}
                 </div>
             )}
-        </>
+        </Layout>
     )
 }
 

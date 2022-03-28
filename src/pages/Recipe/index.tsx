@@ -28,7 +28,7 @@ const Recipe: React.FC = () => {
         ) {
             setIsFavorite(true)
         }
-    }, [id])
+    }, [getDetailRecipe, id])
 
     const toggleTagButton = (tag: string) => setButtonToggle(tag)
 
