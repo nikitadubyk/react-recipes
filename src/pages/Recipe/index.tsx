@@ -10,6 +10,7 @@ import './Recipe.css'
 const Recipe: React.FC = () => {
     const [detail, setDetail] = useState<IDetailRecipe>()
     const [buttonToggle, setButtonToggle] = useState<string>('instructions')
+    const [favorite, setFavorite] = useState<any>([])
     const [isFavorite, setIsFavorite] = useState<boolean>(false)
     const { isLoading, getDetailRecipe } = useRecipesService()
     const { currentUser, isLoaded } = useAuth()
@@ -17,17 +18,17 @@ const Recipe: React.FC = () => {
 
     useEffect(() => {
         getDetailRecipe(id).then(res => setDetail(res))
-        if (!localStorage.getItem('favorite')) {
-            localStorage.setItem('favorite', JSON.stringify([]))
-        }
-
-        const recipes = JSON.parse(localStorage.getItem('favorite') || '')
-        if (
-            recipes.find(
-                (recipe: IDetailRecipe) => Number(recipe.id) === Number(id)
-            )
-        ) {
-            setIsFavorite(true)
+        if (localStorage.getItem('favorite')) {
+            //@ts-ignore
+            const local = JSON.parse(localStorage.getItem('favorite'))
+            setFavorite(local)
+            if (
+                local.find(
+                    (recipe: IDetailRecipe) => Number(recipe.id) === Number(id)
+                )
+            ) {
+                setIsFavorite(true)
+            }
         }
     }, [id])
 
@@ -40,17 +41,17 @@ const Recipe: React.FC = () => {
             image: detail?.image,
         }
 
-        const recipes = JSON.parse(localStorage.getItem('favorite') || '')
-
-        if (recipes.find((recipe: IDetailRecipe) => recipe.id === obj.id)) {
+        if (favorite.find((recipe: IDetailRecipe) => recipe.id === obj.id)) {
             setIsFavorite(false)
-            const filter = recipes.filter(
+            const filter = favorite.filter(
                 (recipe: IDetailRecipe) => Number(recipe.id) !== Number(obj.id)
             )
+            setFavorite([...filter])
             localStorage.setItem('favorite', JSON.stringify(filter))
         } else {
+            const newObj = [...favorite, obj]
             setIsFavorite(true)
-            const newObj = [...recipes, obj]
+            setFavorite([...newObj])
             localStorage.setItem('favorite', JSON.stringify(newObj))
         }
     }
