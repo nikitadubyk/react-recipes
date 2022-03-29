@@ -17,8 +17,11 @@ const Recipe: React.FC = () => {
 
     useEffect(() => {
         getDetailRecipe(id).then(res => setDetail(res))
-        //@ts-ignore
-        const recipes = JSON.parse(localStorage.getItem('favorite') || [])
+        if (!localStorage.getItem('favorite')) {
+            localStorage.setItem('favorite', JSON.stringify([]))
+        }
+
+        const recipes = JSON.parse(localStorage.getItem('favorite') || '')
         if (
             recipes.find(
                 (recipe: IDetailRecipe) => Number(recipe.id) === Number(id)
