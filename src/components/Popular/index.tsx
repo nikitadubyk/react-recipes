@@ -48,6 +48,8 @@ const Popular: React.FC = () => {
                                 },
                                 640: {
                                     perPage: 2,
+                                    pagination: true,
+                                    arrows: true,
                                 },
                                 560: {
                                     perPage: 1,

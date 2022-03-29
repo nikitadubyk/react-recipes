@@ -41,6 +41,8 @@ const Vegetarian: React.FC = () => {
                         breakpoints: {
                             900: {
                                 perPage: 2,
+                                pagination: true,
+                                arrows: true,
                             },
                             500: {
                                 perPage: 1,
