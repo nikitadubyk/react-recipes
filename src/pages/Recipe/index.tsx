@@ -4,6 +4,7 @@ import { IDetailRecipe, IIngredients } from '../../type'
 import { useRecipesService } from '../../services/RecipesService'
 import { useAuth } from '../../utils/auth'
 import Loader from '../../components/Loader'
+import Layout from '../../components/Layout'
 import './Recipe.css'
 
 const Recipe: React.FC = () => {
@@ -28,7 +29,7 @@ const Recipe: React.FC = () => {
         ) {
             setIsFavorite(true)
         }
-    }, [getDetailRecipe, id])
+    }, [id])
 
     const toggleTagButton = (tag: string) => setButtonToggle(tag)
 
@@ -55,7 +56,7 @@ const Recipe: React.FC = () => {
     }
 
     return (
-        <>
+        <Layout title={`${detail?.title}`}>
             {isLoading ? (
                 <Loader />
             ) : (
@@ -179,7 +180,7 @@ const Recipe: React.FC = () => {
                     </div>
                 )
             )}
-        </>
+        </Layout>
     )
 }
 

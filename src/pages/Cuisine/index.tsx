@@ -17,7 +17,7 @@ const Cuisine: React.FC = () => {
 
     useEffect(() => {
         getCuisine(type).then(res => setCuisine(res.results))
-    }, [type, getCuisine])
+    }, [type])
 
     return (
         <Layout title={`Cuisine ${type}`}>

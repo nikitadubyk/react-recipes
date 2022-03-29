@@ -1,35 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../../components/Card'
 import { IRecipes } from '../../type'
 import Layout from '../../components/Layout'
 import './Favorite.css'
 
 const Favorite: React.FC = () => {
+    const [recipes, setRecipes] = useState<IRecipes[]>([])
+
     useEffect(() => {
-        if (!localStorage.getItem('favorite')) {
-            localStorage.setItem('favorite', JSON.stringify([]))
+        if (localStorage.getItem('favorite')) {
+            //@ts-ignore
+            setRecipes(JSON.parse(localStorage.getItem('favorite') || []))
         }
     }, [])
-
-    const recipes: IRecipes[] = JSON.parse(
-        localStorage.getItem('favorite') || ''
-    )
 
     return (
         <Layout title='Favorite'>
             <div className='favorite'>
                 <h3 className='favorite__title'>Favorite</h3>
                 <div className='favorite__wrapper'>
-                    {recipes &&
+                    {recipes.length > 0 ? (
                         recipes.map((recipe: IRecipes) => {
                             return (
-                                <div className='favorite__item'>
-                                    <Card {...recipe} key={recipe.id} />
+                                <div className='favorite__item' key={recipe.id}>
+                                    <Card {...recipe} />
                                 </div>
                             )
-                        })}
-
-                    {recipes.length === 0 && (
+                        })
+                    ) : (
                         <div className='favorite__error'>
                             <svg
                                 height='50px'
@@ -51,13 +49,10 @@ const Favorite: React.FC = () => {
                                         id='radialGradient-1'
                                         r='59.6761013%'
                                     >
-                                        <stop
-                                            offset='0%'
-                                            stop-color='#FDE990'
-                                        />
+                                        <stop offset='0%' stopColor='#FDE990' />
                                         <stop
                                             offset='100%'
-                                            stop-color='#FACE57'
+                                            stopColor='#FACE57'
                                         />
                                     </radialGradient>
                                     <radialGradient
@@ -71,18 +66,18 @@ const Favorite: React.FC = () => {
                                     >
                                         <stop
                                             offset='0%'
-                                            stop-color='#D27C12'
-                                            stop-opacity='0.186216128'
+                                            stopColor='#D27C12'
+                                            stopOpacity='0.186216128'
                                         />
                                         <stop
                                             offset='85.6313345%'
-                                            stop-color='#D27C12'
-                                            stop-opacity='0'
+                                            stopColor='#D27C12'
+                                            stopOpacity='0'
                                         />
                                         <stop
                                             offset='100%'
-                                            stop-color='#D27C12'
-                                            stop-opacity='0.324546547'
+                                            stopColor='#D27C12'
+                                            stopOpacity='0.324546547'
                                         />
                                     </radialGradient>
                                     <linearGradient
@@ -92,13 +87,10 @@ const Favorite: React.FC = () => {
                                         y1='0.372692418%'
                                         y2='99.6273076%'
                                     >
-                                        <stop
-                                            offset='0%'
-                                            stop-color='#251C0C'
-                                        />
+                                        <stop offset='0%' stopColor='#251C0C' />
                                         <stop
                                             offset='100%'
-                                            stop-color='#000000'
+                                            stopColor='#000000'
                                         />
                                     </linearGradient>
                                     <radialGradient
@@ -110,22 +102,19 @@ const Favorite: React.FC = () => {
                                         id='radialGradient-4'
                                         r='92.5373134%'
                                     >
-                                        <stop
-                                            offset='0%'
-                                            stop-color='#71B5F8'
-                                        />
+                                        <stop offset='0%' stopColor='#71B5F8' />
                                         <stop
                                             offset='100%'
-                                            stop-color='#0073E4'
+                                            stopColor='#0073E4'
                                         />
                                     </radialGradient>
                                 </defs>
                                 <g
                                     fill='none'
-                                    fill-rule='evenodd'
+                                    fillRule='evenodd'
                                     id='Page-1'
                                     stroke='none'
-                                    stroke-width='1'
+                                    strokeWidth='1'
                                 >
                                     <g
                                         id='Artboard'
@@ -167,7 +156,7 @@ const Favorite: React.FC = () => {
                                             <path
                                                 d='M261.862067,370 C290.880425,370 317.30918,385.168257 332.211638,409.523562 C335.704214,415.23153 333.924777,422.700172 328.237155,426.205241 C322.606408,429.675259 315.256176,427.959695 311.720892,422.386601 L311.614936,422.21654 C301.064425,404.973687 282.391037,394.256468 261.862067,394.256468 C242.228371,394.256468 224.272045,404.052984 213.490489,420.065781 L213.165977,420.552917 C209.483929,426.139665 201.986228,427.673053 196.419392,423.977834 C190.852557,420.282615 189.324635,412.758094 193.006683,407.171345 C208.179588,384.149589 233.831214,370 261.862067,370 Z'
                                                 fill='#251C0C'
-                                                fill-rule='nonzero'
+                                                fillRule='nonzero'
                                                 id='Path'
                                             />
                                             <path

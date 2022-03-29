@@ -22,7 +22,7 @@ const LogIn: React.FC = () => {
     }
 
     return (
-        <Layout title='Log In'>
+        <Layout title='Login'>
             <div className='login'>
                 <h2>Log In</h2>
                 {error && <div className='error'>{error}</div>}

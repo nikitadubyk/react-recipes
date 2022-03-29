@@ -16,7 +16,7 @@ const Searched: React.FC = () => {
 
     useEffect(() => {
         getRecipesBySearched(name).then(res => setRecipes(res.results))
-    }, [name, getRecipesBySearched])
+    }, [name])
 
     return (
         <Layout title={`Searched: ${name}`}>

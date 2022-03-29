@@ -23,7 +23,7 @@ const Signup: React.FC = () => {
     }
 
     return (
-        <Layout title='Sign Up'>
+        <Layout title='Sign In'>
             <div className='signup'>
                 <h2>Sign up</h2>
                 {error && <div className='error'>{error}</div>}
