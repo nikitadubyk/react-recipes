@@ -23,4 +23,10 @@ export interface IDetailRecipe {
     extendedIngredients: IIngredients[]
 }
 
+export interface IFavorite {
+    id: number | undefined
+    title: string | undefined
+    image: string | undefined
+}
+
 export type IParam = string | undefined

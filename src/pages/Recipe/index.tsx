@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { IDetailRecipe, IIngredients } from '../../type'
+import { IDetailRecipe, IIngredients, IFavorite } from '../../type'
 import { useRecipesService } from '../../services/RecipesService'
 import { useAuth } from '../../utils/auth'
 import Loader from '../../components/Loader'
@@ -10,7 +10,7 @@ import './Recipe.css'
 const Recipe: React.FC = () => {
     const [detail, setDetail] = useState<IDetailRecipe>()
     const [buttonToggle, setButtonToggle] = useState<string>('instructions')
-    const [favorite, setFavorite] = useState<any>([])
+    const [favorite, setFavorite] = useState<IFavorite[]>([])
     const [isFavorite, setIsFavorite] = useState<boolean>(false)
     const { isLoading, getDetailRecipe } = useRecipesService()
     const { currentUser, isLoaded } = useAuth()
@@ -24,7 +24,7 @@ const Recipe: React.FC = () => {
             setFavorite(local)
             if (
                 local.find(
-                    (recipe: IDetailRecipe) => Number(recipe.id) === Number(id)
+                    (recipe: IFavorite) => Number(recipe.id) === Number(id)
                 )
             ) {
                 setIsFavorite(true)
@@ -41,10 +41,10 @@ const Recipe: React.FC = () => {
             image: detail?.image,
         }
 
-        if (favorite.find((recipe: IDetailRecipe) => recipe.id === obj.id)) {
+        if (favorite.find((recipe: IFavorite) => recipe.id === obj.id)) {
             setIsFavorite(false)
             const filter = favorite.filter(
-                (recipe: IDetailRecipe) => Number(recipe.id) !== Number(obj.id)
+                (recipe: IFavorite) => Number(recipe.id) !== Number(obj.id)
             )
             setFavorite([...filter])
             localStorage.setItem('favorite', JSON.stringify(filter))
