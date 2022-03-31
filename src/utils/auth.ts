@@ -8,9 +8,8 @@ import {
     User,
 } from 'firebase/auth'
 
-export const createUser = async (email: string, password: string) => {
-    return await createUserWithEmailAndPassword(auth, email, password)
-}
+export const createUser = async (email: string, password: string) =>
+    await createUserWithEmailAndPassword(auth, email, password)
 
 export const useAuth = () => {
     const [currentUser, setCurrentUser] = useState<User | null>(null)
@@ -31,9 +30,8 @@ export const useAuth = () => {
     return { currentUser, isLoaded }
 }
 
-export const logIn = async (email: string, password: string) => {
-    return signInWithEmailAndPassword(auth, email, password)
-}
+export const logIn = async (email: string, password: string) =>
+    await signInWithEmailAndPassword(auth, email, password)
 
 export const logOut = async () => {
     await signOut(auth)

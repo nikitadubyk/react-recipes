@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { IRecipes } from '../../type'
+import { Recipes } from '../../type'
 import { useRecipesService } from '../../services/RecipesService'
 import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
@@ -10,7 +10,7 @@ import Category from '../../components/Category'
 import './Searched.css'
 
 const Searched: React.FC = () => {
-    const [recipes, setRecipes] = useState<IRecipes[]>([])
+    const [recipes, setRecipes] = useState<Recipes[]>([])
     const { isLoading, getRecipesBySearched } = useRecipesService()
     const { name } = useParams()
 
@@ -28,7 +28,7 @@ const Searched: React.FC = () => {
             ) : (
                 <div className='searched'>
                     {recipes &&
-                        recipes.map((item: IRecipes) => {
+                        recipes.map((item: Recipes) => {
                             return (
                                 <div
                                     className='searched__wrapper'

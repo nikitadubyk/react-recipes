@@ -1,32 +1,32 @@
-export interface IRecipes {
+export interface Recipes {
     id: number
     title: string
     calories: number
     image: string
 }
 
-export interface IResponse {
-    responce: IRecipes[]
+export interface Response {
+    responce: Recipes[]
 }
 
-export interface IIngredients {
+export interface Ingredients {
     id: number
     original: string
 }
 
-export interface IDetailRecipe {
+export interface DetailRecipe {
     id: number
     title: string
     image: string
     summary: string
     instructions: string
-    extendedIngredients: IIngredients[]
+    extendedIngredients: Ingredients[]
 }
 
-export interface IFavorite {
+export interface Favorite {
     id: number | undefined
     title: string | undefined
     image: string | undefined
 }
 
-export type IParam = string | undefined
+export type Param = string | undefined

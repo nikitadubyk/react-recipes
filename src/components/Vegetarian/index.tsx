@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { IRecipes } from '../../type'
+import { Recipes } from '../../type'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
 import Card from '../Card'
@@ -7,7 +7,7 @@ import { useRecipesService } from '../../services/RecipesService'
 import '../Popular/Popular.css'
 
 const Vegetarian: React.FC = () => {
-    const [vegetarians, setVegetarians] = useState<IRecipes[]>([])
+    const [vegetarians, setVegetarians] = useState<Recipes[]>([])
     const { getVegetarianRecipes } = useRecipesService()
 
     useEffect(() => {
@@ -51,7 +51,7 @@ const Vegetarian: React.FC = () => {
                     }}
                 >
                     {vegetarians &&
-                        vegetarians.map((item: IRecipes) => {
+                        vegetarians.map((item: Recipes) => {
                             return (
                                 <SplideSlide key={item.id}>
                                     <Card {...item} />

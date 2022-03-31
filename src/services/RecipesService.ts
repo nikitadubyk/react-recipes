@@ -1,5 +1,5 @@
 import { useHttp } from '../hook/http.hook'
-import { IParam } from '../type'
+import { Param } from '../type'
 
 export const useRecipesService = () => {
     const { isLoading, request } = useHttp()
@@ -16,19 +16,19 @@ export const useRecipesService = () => {
         )
     }
 
-    const getCuisine = (type: IParam) => {
+    const getCuisine = (type: Param) => {
         return request(
             `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=12&cuisine=${type}}`
         )
     }
 
-    const getDetailRecipe = (id: IParam) => {
+    const getDetailRecipe = (id: Param) => {
         return request(
             `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`
         )
     }
 
-    const getRecipesBySearched = (name: IParam) => {
+    const getRecipesBySearched = (name: Param) => {
         return request(
             `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`
         )

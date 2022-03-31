@@ -25,7 +25,7 @@ const Header: React.FC = () => {
             {currentUser ? (
                 <div className='header__link'>
                     <Link to='/favorite'>Favorite</Link>
-                    <button onClick={logOut}>LogOut</button>
+                    <button onClick={logOut}>Log Out</button>
                 </div>
             ) : (
                 <div className='header__link'>
