@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Recipes } from '../../type'
+import styled from 'styled-components'
+import { Recipes } from '../type'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
-import Card from '../Card'
-import { useRecipesService } from '../../services/RecipesService'
-import '../Popular/Popular.css'
+import Card from './Card'
+import { useRecipesService } from '../services/RecipesService'
 
 const Vegetarian: React.FC = () => {
     const [vegetarians, setVegetarians] = useState<Recipes[]>([])
@@ -29,8 +29,8 @@ const Vegetarian: React.FC = () => {
 
     return (
         <>
-            <div className='vegetarian'>
-                <h3 className='vegetarian__title'>Vegetarians Recipes</h3>
+            <VegetarianStyled>
+                <h3>Vegetarians Recipes</h3>
                 <Splide
                     options={{
                         perPage: 3,
@@ -59,9 +59,23 @@ const Vegetarian: React.FC = () => {
                             )
                         })}
                 </Splide>
-            </div>
+            </VegetarianStyled>
         </>
     )
 }
+
+const VegetarianStyled = styled.div`
+    padding: 2rem 15rem;
+    h3 {
+        font-size: 1.5rem;
+    }
+    @media (max-width: 1350px) {
+        padding: 1rem 2rem;
+    }
+
+    @media (max-width: 640px) {
+        text-align: center;
+    }
+`
 
 export default Vegetarian

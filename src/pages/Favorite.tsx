@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Card from '../../components/Card'
-import { Recipes } from '../../type'
-import Layout from '../../components/Layout'
-import './Favorite.css'
+import styled from 'styled-components'
+import Card from '../components/Card'
+import { Recipes } from '../type'
+import Layout from '../components/Layout'
 
 const Favorite: React.FC = () => {
     const [recipes, setRecipes] = useState<Recipes[]>([])
@@ -16,8 +16,8 @@ const Favorite: React.FC = () => {
 
     return (
         <Layout title='Favorite'>
-            <div className='favorite'>
-                <h3 className='favorite__title'>Favorite</h3>
+            <FavoriteStyled>
+                <h3>Favorite</h3>
                 <div className='favorite__wrapper'>
                     {recipes.length > 0 ? (
                         recipes.map((recipe: Recipes) => {
@@ -31,14 +31,14 @@ const Favorite: React.FC = () => {
                         <View />
                     )}
                 </div>
-            </div>
+            </FavoriteStyled>
         </Layout>
     )
 }
 
 const View = () => {
     return (
-        <div className='favorite__error'>
+        <FavoriteError>
             <svg
                 height='50px'
                 version='1.1'
@@ -171,8 +171,49 @@ const View = () => {
             </svg>
             <h3>Oops, no favourite recipes</h3>
             <div>You haven't added anything to your bookmarks</div>
-        </div>
+        </FavoriteError>
     )
 }
+
+const FavoriteStyled = styled.div`
+    padding: 2rem 15rem;
+    h3 {
+        font-size: 2rem;
+    }
+    .favorite__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .favorite__item {
+        width: 15rem;
+        margin: 0 5rem 5rem;
+    }
+
+    @media (max-width: 1400px) {
+        padding: 2rem;
+
+        .favorite__item {
+            margin: 0 2rem 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 0 2rem;
+    }
+
+    @media (max-width: 400px) {
+        .favorite__item {
+            margin: 0 0 2rem;
+        }
+    }
+`
+
+const FavoriteError = styled.div`
+    margin: 1rem auto;
+    text-align: center;
+`
 
 export default Favorite

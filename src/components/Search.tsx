@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './Search.css'
+import styled from 'styled-components'
 
 const Search: React.FC = () => {
     const [inputValue, setInputValue] = useState<string>('')
@@ -12,7 +12,7 @@ const Search: React.FC = () => {
     }
 
     return (
-        <div className='search'>
+        <SearchStyled>
             <form onSubmit={submitForm}>
                 <label htmlFor='search'>
                     <svg
@@ -41,8 +41,47 @@ const Search: React.FC = () => {
                     onChange={e => setInputValue(e.target.value)}
                 />
             </form>
-        </div>
+        </SearchStyled>
     )
 }
+
+const SearchStyled = styled.div`
+    display: block;
+    margin: 2rem auto;
+    text-align: center;
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    input {
+        padding: 0.5rem 1rem;
+        border: 1px solid #000;
+        border-radius: 2rem;
+        font-size: 1rem;
+        background-color: #000;
+        color: #fff;
+        width: 20rem;
+    }
+
+    svg {
+        margin-right: 0.5rem;
+        cursor: pointer;
+    }
+
+    input::placeholder {
+        color: #fff;
+    }
+
+    @media (max-width: 400px) {
+        width: 15rem;
+        margin: 1.3rem auto;
+
+        input {
+            width: 100%;
+        }
+    }
+`
 
 export default Search

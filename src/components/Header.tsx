@@ -1,13 +1,13 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { useAuth, logOut } from '../../utils/auth'
-import './Header.css'
+import { useAuth, logOut } from '../utils/auth'
 
 const Header: React.FC = () => {
     const { currentUser } = useAuth()
 
     return (
-        <header className='header'>
+        <HeaderStyled className='header'>
             <Link to='/' className='header__img'>
                 <svg
                     viewBox='0 0 32 32'
@@ -33,8 +33,41 @@ const Header: React.FC = () => {
                     <Link to='/login'>Log In</Link>
                 </div>
             )}
-        </header>
+        </HeaderStyled>
     )
 }
+
+const HeaderStyled = styled.header`
+    padding: 1rem 10rem;
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+        text-decoration: none;
+        color: #fff;
+        margin: 0 0.5rem;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    button {
+        text-decoration: none;
+        color: #000;
+        padding: 0.3rem 1rem;
+        margin-left: 1rem;
+        background-color: rgb(212, 212, 212);
+        border-radius: 2rem;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s all;
+        &:hover {
+            background-color: rgb(255, 255, 255);
+        }
+    }
+    @media (max-width: 990px) {
+        padding: 1rem 2rem;
+    }
+`
 
 export default Header

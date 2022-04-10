@@ -1,13 +1,13 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import './Category.css'
 
 const Category: React.FC = () => {
     return (
-        <div className='category'>
-            <div className='category__title'>Category</div>
-            <div className='category__wrapper'>
-                <Link to='/cuisine/italian' className='category__item'>
+        <div>
+            <CategoryTitle>Category</CategoryTitle>
+            <CategoryStyled>
+                <Link to='/cuisine/italian'>
                     <svg
                         enableBackground='new 0 0 91 91'
                         height='25px'
@@ -78,7 +78,7 @@ const Category: React.FC = () => {
                     </svg>
                     <p>Italian</p>
                 </Link>
-                <Link to='/cuisine/mexican' className='category__item'>
+                <Link to='/cuisine/mexican'>
                     <svg
                         viewBox='0 0 512 512'
                         xmlns='http://www.w3.org/2000/svg'
@@ -108,7 +108,7 @@ const Category: React.FC = () => {
                     </svg>
                     <p>Mexican</p>
                 </Link>
-                <Link to='/cuisine/american' className='category__item'>
+                <Link to='/cuisine/american'>
                     <svg
                         enableBackground='new 0 0 25 25'
                         height='25px'
@@ -177,7 +177,7 @@ const Category: React.FC = () => {
                     </svg>
                     <p>American</p>
                 </Link>
-                <Link to='/cuisine/korean' className='category__item'>
+                <Link to='/cuisine/korean'>
                     <svg
                         viewBox='0 0 512 512'
                         xmlns='http://www.w3.org/2000/svg'
@@ -193,9 +193,38 @@ const Category: React.FC = () => {
                     </svg>
                     <p>Korean</p>
                 </Link>
-            </div>
+            </CategoryStyled>
         </div>
     )
 }
+
+const CategoryStyled = styled.div`
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    a {
+        text-decoration: none;
+        color: #000;
+        font-size: 1rem;
+        transition: all 0.5s;
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+
+    @media (max-width: 640px) {
+        width: 18rem;
+    }
+`
+
+const CategoryTitle = styled.div`
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+`
 
 export default Category

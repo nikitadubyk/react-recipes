@@ -19,4 +19,5 @@ You can view the application here: https://recipes-two-cyan.vercel.app/
 -   Firebase
 -   Splide (slider)
 -   react-helmet
+-   styled-components
 -   axios

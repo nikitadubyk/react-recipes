@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
-import { DetailRecipe, Ingredients, Favorite } from '../../type'
-import { useRecipesService } from '../../services/RecipesService'
-import { useAuth } from '../../utils/auth'
-import Loader from '../../components/Loader'
-import Layout from '../../components/Layout'
-import './Recipe.css'
+import { DetailRecipe, Ingredients, Favorite } from '../type'
+import { useRecipesService } from '../services/RecipesService'
+import { useAuth } from '../utils/auth'
+import Loader from '../components/Loader'
+import Layout from '../components/Layout'
 
 const Recipe: React.FC = () => {
     const [detail, setDetail] = useState<DetailRecipe>()
@@ -62,7 +62,7 @@ const Recipe: React.FC = () => {
                 <Loader />
             ) : (
                 detail && (
-                    <div className='recipe'>
+                    <RecipeStyled>
                         <div className='recipe__wrapper'>
                             <h3 className='recipe__title'>{detail.title}</h3>
                             <img
@@ -178,11 +178,115 @@ const Recipe: React.FC = () => {
                                 </>
                             )}
                         </div>
-                    </div>
+                    </RecipeStyled>
                 )
             )}
         </Layout>
     )
 }
+
+const RecipeStyled = styled.div`
+    padding: 2rem;
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+
+    .recipe__wrapper {
+        margin-right: 5rem;
+    }
+
+    .recipe__descr {
+        width: 50rem;
+    }
+
+    .recipe__descr a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .recipe__descr a:hover {
+        text-decoration: underline;
+    }
+
+    .recipe__wrapper__button {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .recipe__button {
+        margin: 0 1rem;
+        border: 1px solid #000;
+        background-color: #fff;
+        padding: 1rem 2rem;
+        cursor: pointer;
+        transition: 0.5s all;
+    }
+
+    .recipe__star {
+        padding: 0.5rem;
+        border: 1px solid #000;
+        border-radius: 0.5rem;
+        background-color: #fff;
+        cursor: pointer;
+        transition: 0.5s all;
+    }
+
+    .recipe__star_active {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: none;
+        background-color: rgb(19, 163, 0);
+        cursor: pointer;
+        transition: 0.5s all;
+    }
+
+    .recipe__star:hover {
+        border: none;
+        background-color: rgb(19, 163, 0);
+    }
+
+    .recipe__star:hover svg g,
+    .recipe__star_active svg g {
+        fill: rgb(255, 255, 255);
+        transition: 0.2s all;
+    }
+
+    .recipe__button:hover,
+    .recipe__button_active {
+        border: none;
+        background-color: #000;
+        color: #fff;
+    }
+
+    @media (max-width: 1200px) {
+        flex-direction: column;
+        margin-top: 0;
+
+        .recipe__wrapper {
+            margin: 0 auto;
+        }
+
+        .recipe__descr {
+            width: 100%;
+            margin: 2rem auto;
+        }
+
+        .recipe__wrapper__button {
+            text-align: center;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .recipe__button {
+            padding: 1rem;
+            margin: 0 0.3rem;
+        }
+    }
+`
 
 export default Recipe

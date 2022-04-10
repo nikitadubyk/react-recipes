@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Recipes } from '../../type'
+import styled from 'styled-components'
+import { Recipes } from '../type'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/splide/dist/css/splide.min.css'
-import Card from '../Card'
-import Loader from '../Loader'
-import { useRecipesService } from '../../services/RecipesService'
-import './Popular.css'
+import Card from './Card'
+import Loader from './Loader'
+import { useRecipesService } from '../services/RecipesService'
 
 const Popular: React.FC = () => {
     const [populars, setPopulars] = useState<Recipes[]>([])
@@ -33,8 +33,8 @@ const Popular: React.FC = () => {
             {isLoading ? (
                 <Loader />
             ) : (
-                <div className='popular'>
-                    <h3 className='popular__title'>Popular Recipes</h3>
+                <PopularStyled>
+                    <h3>Popular Recipes</h3>
                     <Splide
                         options={{
                             perPage: 4,
@@ -66,10 +66,24 @@ const Popular: React.FC = () => {
                                 )
                             })}
                     </Splide>
-                </div>
+                </PopularStyled>
             )}
         </>
     )
 }
+
+const PopularStyled = styled.div`
+    padding: 2rem 15rem;
+    h3 {
+        font-size: 1.5rem;
+    }
+    @media (max-width: 1350px) {
+        padding: 1rem 2rem;
+    }
+
+    @media (max-width: 640px) {
+        text-align: center;
+    }
+`
 
 export default Popular
