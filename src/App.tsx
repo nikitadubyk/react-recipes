@@ -1,15 +1,15 @@
-import React from 'react'
-import { createGlobalStyle } from 'styled-components'
-import { Routes, Route } from 'react-router-dom'
-import PrivateRoute from './components/PrivateRoute'
-import Header from './components/Header'
-import Cuisine from './pages/Cuisine'
-import Home from './pages/Home'
-import Recipe from './pages/Recipe'
-import Searched from './pages/Searched'
-import LogIn from './pages/Login'
-import SignUp from './pages/SingUp'
-import Favorite from './pages/Favorite'
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
+import { Routes, Route } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
+import Header from './components/Header';
+import Cuisine from './pages/Cuisine';
+import Home from './pages/Home';
+import Recipe from './pages/Recipe';
+import Searched from './pages/Searched';
+import LogIn from './pages/Login';
+import SignUp from './pages/SingUp';
+import Favorite from './pages/Favorite';
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -35,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
             monospace;
     }
-`
+`;
 
 const App: React.FC = () => {
     return (
@@ -59,7 +59,7 @@ const App: React.FC = () => {
                 />
             </Routes>
         </>
-    )
-}
+    );
+};
 
-export default App
+export default App;
