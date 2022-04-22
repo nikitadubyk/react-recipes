@@ -65,12 +65,13 @@ const LoginStyled = styled.div`
         padding: 2rem;
         width: 25rem;
         min-height: 15rem;
-        background-color: rgb(57, 255, 189);
+        background-color: ${({ theme }) => theme.formColor};
     }
 
     form h4 {
         margin: 0;
         font-size: 1.2rem;
+        color: ${({ theme }) => theme.textForm};
     }
 
     input {

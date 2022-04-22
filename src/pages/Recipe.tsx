@@ -201,7 +201,7 @@ const RecipeStyled = styled.div`
 
     .recipe__descr a {
         text-decoration: none;
-        color: #000;
+        color: ${({ theme }) => theme.text};
     }
 
     .recipe__descr a:hover {
@@ -236,14 +236,14 @@ const RecipeStyled = styled.div`
         padding: 0.5rem;
         border-radius: 0.5rem;
         border: none;
-        background-color: rgb(19, 163, 0);
+        background-color: ${({ theme }) => theme.backgroundStar};
         cursor: pointer;
         transition: 0.5s all;
     }
 
     .recipe__star:hover {
         border: none;
-        background-color: rgb(19, 163, 0);
+        background-color: ${({ theme }) => theme.backgroundStar};
     }
 
     .recipe__star:hover svg g,

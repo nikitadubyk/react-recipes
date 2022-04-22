@@ -206,6 +206,7 @@ const CategoryStyled = styled.div`
     text-align: center;
     margin: 0 auto;
     margin-top: 1.5rem;
+    color: ${({ theme }) => theme.text};
     a {
         text-decoration: none;
         color: #000;

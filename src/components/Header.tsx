@@ -3,12 +3,17 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useAuth, logOut } from '../utils/auth'
 
-const Header: React.FC = () => {
+interface Props {
+    changeTheme: () => void
+    isDarkTheme: boolean
+}
+
+const Header: React.FC<Props> = ({ changeTheme, isDarkTheme }) => {
     const { currentUser } = useAuth()
 
     return (
-        <HeaderStyled className='header'>
-            <Link to='/' className='header__img'>
+        <HeaderStyled>
+            <Link to='/'>
                 <svg
                     viewBox='0 0 32 32'
                     xmlns='http://www.w3.org/2000/svg'
@@ -22,17 +27,68 @@ const Header: React.FC = () => {
                     </g>
                 </svg>
             </Link>
-            {currentUser ? (
-                <div className='header__link'>
-                    <Link to='/favorite'>Favorite</Link>
-                    <button onClick={logOut}>Log Out</button>
-                </div>
-            ) : (
-                <div className='header__link'>
-                    <Link to='/signup'>Sign Up</Link>
-                    <Link to='/login'>Log In</Link>
-                </div>
-            )}
+            <Wrapper>
+                {currentUser ? (
+                    <div>
+                        <Link to='/favorite'>Favorite</Link>
+                        <button onClick={logOut}>Log Out</button>
+                    </div>
+                ) : (
+                    <div>
+                        <Link to='/signup'>Sign Up</Link>
+                        <Link to='/login'>Log In</Link>
+                    </div>
+                )}
+                <ThemeIcon onClick={changeTheme}>
+                    {isDarkTheme ? (
+                        <svg
+                            data-name='Layer 1'
+                            viewBox='0 0 64 64'
+                            xmlns='http://www.w3.org/2000/svg'
+                            width={25}
+                            height={25}
+                        >
+                            <title />
+                            <path
+                                d='M44.54 41.47a23 23 0 0 1-20.05-29.74A1 1 0 0 0 23 10.59 23 23 0 1 0 54.41 42a1 1 0 0 0-1.14-1.47 23.06 23.06 0 0 1-8.73.94Z'
+                                style={{
+                                    fill: '#efcc00',
+                                }}
+                            />
+                        </svg>
+                    ) : (
+                        <svg
+                            data-name='Layer 1'
+                            id='Layer_1'
+                            viewBox='0 0 64 64'
+                            xmlns='http://www.w3.org/2000/svg'
+                            width={25}
+                            height={25}
+                        >
+                            <defs>
+                                <style>
+                                    {
+                                        '.cls-2{fill:none;stroke:#efcc00;stroke-linecap:round;stroke-miterlimit:10;stroke-width:3px}'
+                                    }
+                                </style>
+                            </defs>
+                            <title />
+                            <circle
+                                cx={32}
+                                cy={32}
+                                r={17}
+                                style={{
+                                    fill: '#efcc00',
+                                }}
+                            />
+                            <path
+                                className='cls-2'
+                                d='M32 5v6M32 53v6M59 32h-6M11 32H5M51.09 12.91l-4.24 4.24M17.15 46.85l-4.24 4.24M51.09 51.09l-4.24-4.24M17.15 17.15l-4.24-4.24'
+                            />
+                        </svg>
+                    )}
+                </ThemeIcon>
+            </Wrapper>
         </HeaderStyled>
     )
 }
@@ -43,12 +99,16 @@ const HeaderStyled = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #fff;
     a {
         text-decoration: none;
         color: #fff;
         margin: 0 0.5rem;
         &:hover {
             text-decoration: underline;
+        }
+        svg {
+            fill: #fff;
         }
     }
     button {
@@ -68,6 +128,16 @@ const HeaderStyled = styled.header`
     @media (max-width: 990px) {
         padding: 1rem 2rem;
     }
+`
+
+const Wrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+const ThemeIcon = styled.div`
+    margin: 0 0.5rem;
+    cursor: pointer;
 `
 
 export default Header
