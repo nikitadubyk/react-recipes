@@ -11,6 +11,7 @@ You can view the application here: https://recipes-two-cyan.vercel.app/
 
 -   Account registration, sign in, sign out
 -   Adding recipes to bookmarks
+-   Switch to a darker theme
 -   Working with third party API
 
 ## Technologies used in this project
